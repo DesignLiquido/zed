@@ -1,0 +1,30 @@
+id = "delegua-language"
+name = "Delégua Language"
+version = "0.1.0"
+schema_version = 1
+authors = ["Design Líquido <contato@designliquido.com.br>"]
+description = "Suporte a Delégua e dialetos no Zed usando @designliquido/delegua-lsp."
+repository = "https://github.com/DesignLiquido/zed"
+
+[language_servers.delegua-lsp]
+name = "Delégua LSP"
+languages = [
+	"BIRL",
+	"Delégua",
+	"Delégua Testes",
+	"MAPLER",
+	"Pituguês",
+	"Portugol Studio",
+	"Potigol",
+	"VisuAlg",
+]
+
+[language_servers.delegua-lsp.language_ids]
+"BIRL" = "birl"
+"Delégua" = "delegua"
+"Delégua Testes" = "delegua"
+"MAPLER" = "mapler"
+"Pituguês" = "pitugues"
+"Portugol Studio" = "portugolstudio"
+"Potigol" = "potigol"
+"VisuAlg" = "visualg"

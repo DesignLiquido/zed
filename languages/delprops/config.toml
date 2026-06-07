@@ -1,0 +1,5 @@
+name = "Delégua Propriedades"
+grammar = "javascript"
+path_suffixes = ["delprops"]
+line_comments = ["// "]
+tab_size = 4

@@ -1,0 +1,5 @@
+name = "Egua"
+grammar = "javascript"
+path_suffixes = ["egua"]
+line_comments = ["// "]
+tab_size = 4

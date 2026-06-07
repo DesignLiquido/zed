@@ -1,0 +1,5 @@
+name = "VisuAlg"
+grammar = "javascript"
+path_suffixes = ["alg"]
+line_comments = ["// "]
+tab_size = 4

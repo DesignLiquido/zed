@@ -1,0 +1,5 @@
+name = "BIRL"
+grammar = "javascript"
+path_suffixes = ["birl"]
+line_comments = ["// "]
+tab_size = 4

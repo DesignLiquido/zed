@@ -1,0 +1,5 @@
+name = "Pituguês"
+grammar = "javascript"
+path_suffixes = ["pitu", "pitugues"]
+line_comments = ["// "]
+tab_size = 4

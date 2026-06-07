@@ -1,0 +1,5 @@
+name = "FolEs"
+grammar = "css"
+path_suffixes = ["foles"]
+line_comments = ["// "]
+tab_size = 2
