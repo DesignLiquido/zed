@@ -1,0 +1,226 @@
+==================
+Variable declaration
+==================
+
+var nome = "Delégua";
+
+---
+
+(source_file
+  (variable_declaration
+    (identifier)
+    (string)))
+
+==================
+Function with return
+==================
+
+funcao soma(a, b) {
+  retorna a + b;
+}
+
+---
+
+(source_file
+  (function_declaration
+    (identifier)
+    (parameter
+      (identifier))
+    (parameter
+      (identifier))
+    (block
+      (return_statement
+        (binary_expression
+          (identifier)
+          (identifier))))))
+
+==================
+If else
+==================
+
+se (verdadeiro) {
+  var x = 1;
+} senao {
+  var x = 2;
+}
+
+---
+
+(source_file
+  (if_statement
+    (boolean)
+    (block
+      (variable_declaration
+        (identifier)
+        (number)))
+    (block
+      (variable_declaration
+        (identifier)
+        (number)))))
+
+==================
+Import statement
+==================
+
+importar { Texto, Numero } de "modulo";
+
+---
+
+(source_file
+  (import_statement
+    (identifier)
+    (identifier)
+    (string)))
+
+==================
+Class declaration
+==================
+
+classe Pessoa {
+  nomeCompleto() {
+    retorna "ok";
+  }
+}
+
+---
+
+(source_file
+  (class_declaration
+    (identifier)
+    (method_declaration
+      (identifier)
+      (block
+        (return_statement
+          (string))))))
+
+==================
+Switch statement
+==================
+
+escolha (x) {
+  caso 1:
+    var y = 2;
+  padrao:
+    var y = 3;
+}
+
+---
+
+(source_file
+  (switch_statement
+    (identifier)
+    (switch_case
+      (number)
+      (variable_declaration
+        (identifier)
+        (number)))
+    (switch_default
+      (variable_declaration
+        (identifier)
+        (number)))))
+
+==================
+Try catch finally
+==================
+
+tente {
+  retorna 1;
+} pegue (erro) {
+  retorna 2;
+} finalmente {
+  retorna 3;
+}
+
+---
+
+(source_file
+  (try_statement
+    (block
+      (return_statement
+        (number)))
+    (identifier)
+    (block
+      (return_statement
+        (number)))
+    (block
+      (return_statement
+        (number)))))
+
+==================
+For each, continue and break
+==================
+
+para cada item em itens {
+  continue;
+  sustar;
+}
+
+---
+
+(source_file
+  (for_each_statement
+    (identifier)
+    (identifier)
+    (block
+      (continue_statement)
+      (break_statement))))
+
+==================
+Interface declaration
+==================
+
+interface Repositorio {
+  buscar(id: texto): texto;
+}
+
+---
+
+(source_file
+  (interface_declaration
+    (identifier)
+    (method_signature
+      (identifier)
+      (parameter
+        (identifier)
+        (type_identifier))
+      (type_identifier))))
+
+==================
+Throw, assert and help
+==================
+
+falhar "erro";
+assercao(verdadeiro);
+ajuda("tipo");
+
+---
+
+(source_file
+  (throw_statement
+    (string))
+  (assert_statement
+    (boolean))
+  (help_statement
+    (string)))
+
+==================
+Array and index expressions
+==================
+
+var lista = [1, 2, 3];
+var primeiro = lista[0];
+
+---
+
+(source_file
+  (variable_declaration
+    (identifier)
+    (array_literal
+      (number)
+      (number)
+      (number)))
+  (variable_declaration
+    (identifier)
+    (index_expression
+      (identifier)
+      (number))))
