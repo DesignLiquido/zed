@@ -182,8 +182,10 @@ interface Repositorio {
       (identifier)
       (parameter
         (identifier)
-        (type_identifier))
-      (type_identifier))))
+        (type_identifier
+          (identifier)))
+      (type_identifier
+        (identifier)))))
 
 ==================
 Throw, assert and help
@@ -224,3 +226,362 @@ var primeiro = lista[0];
     (index_expression
       (identifier)
       (number))))
+
+==================
+Property statement
+==================
+
+rotulo: var x = 10;
+
+---
+
+(source_file
+  (property_statement
+    (identifier)
+    (variable_declaration
+      (identifier)
+      (number))))
+
+==================
+Having as statement
+==================
+
+tendo recurso como r {
+  ajuda(r);
+}
+
+---
+
+(source_file
+  (having_as_statement
+    (identifier)
+    (identifier)
+    (block
+      (help_statement
+        (identifier)))))
+
+==================
+Extension declaration
+==================
+
+extensao de Texto {
+  tamanho() {
+    retorna 0;
+  }
+}
+
+---
+
+(source_file
+  (extension_declaration
+    (identifier)
+    (method_declaration
+      (identifier)
+      (block
+        (return_statement
+          (number))))))
+
+==================
+Class with implements
+==================
+
+classe Repositorio herda Base implementa IBusca, ISalva {
+  salvar() {
+    retorna verdadeiro;
+  }
+}
+
+---
+
+(source_file
+  (class_declaration
+    (identifier)
+    (identifier)
+    (identifier)
+    (identifier)
+    (method_declaration
+      (identifier)
+      (block
+        (return_statement
+          (boolean))))))
+
+==================
+Assert variants and help empty
+==================
+
+assercao verdadeiro;
+assercao(verdadeiro, "ok");
+ajuda();
+
+---
+
+(source_file
+  (assert_statement
+    (boolean))
+  (assert_statement
+    (boolean)
+    (string))
+  (help_statement))
+
+==================
+Decorators and async function
+==================
+
+@decorador
+assincrono funcao executar() {
+  retorna 1;
+}
+
+---
+
+(source_file
+  (function_declaration
+    (decorator
+      (decorator_name
+        (identifier)))
+    (identifier)
+    (block
+      (return_statement
+        (number)))))
+
+==================
+Class modifiers and mixins
+==================
+
+@modelo
+classe abstrato estatico Conta herda Base implementa IConta mescla Logavel {
+  @interno
+  abrir() {
+    retorna verdadeiro;
+  }
+}
+
+---
+
+(source_file
+  (class_declaration
+    (decorator
+      (decorator_name
+        (identifier)))
+    (class_modifiers)
+    (identifier)
+    (identifier)
+    (identifier)
+    (identifier)
+    (method_declaration
+      (decorator
+        (decorator_name
+          (identifier)))
+      (identifier)
+      (block
+        (return_statement
+          (boolean))))))
+
+==================
+Advanced operators
+==================
+
+var a = 1;
+a **= 2;
+var b = a \ 2;
+var c = a >> 1;
+var d = a & b;
+a++;
+
+---
+
+(source_file
+  (variable_declaration
+    (identifier)
+    (number))
+  (expression_statement
+    (assignment_expression
+      (identifier)
+      (number)))
+  (variable_declaration
+    (identifier)
+    (binary_expression
+      (identifier)
+      (number)))
+  (variable_declaration
+    (identifier)
+    (binary_expression
+      (identifier)
+      (number)))
+  (variable_declaration
+    (identifier)
+    (binary_expression
+      (identifier)
+      (identifier)))
+  (expression_statement
+    (update_expression
+      (identifier))))
+
+==================
+Object literal and call expression
+==================
+
+var opcoes = { nome: "Delegua", [indice]: 1 };
+var instancia = Fabrica.Criador(opcoes);
+
+---
+
+(source_file
+  (variable_declaration
+    (identifier)
+    (object_literal
+      (property_assignment
+        (property_name
+          (identifier))
+        (string))
+      (property_assignment
+        (property_name
+          (identifier))
+        (number))))
+  (variable_declaration
+    (identifier)
+    (call_expression
+      (member_expression
+        (identifier)
+        (identifier))
+      (arguments
+        (argument
+          (identifier))))))
+
+==================
+Qualified decorator with arguments
+==================
+
+@api.v1.rota("/usuarios", ...extras)
+funcao listar() {
+  retorna [];
+}
+
+---
+
+(source_file
+  (function_declaration
+    (decorator
+      (decorator_name
+        (identifier)
+        (identifier)
+        (identifier))
+      (arguments
+        (argument
+          (string))
+        (argument
+          (identifier))))
+    (identifier)
+    (block
+      (return_statement
+        (array_literal)))))
+
+==================
+Arrow function and optional chaining
+==================
+
+var dobro = (x) => x + x;
+var seguro = objeto?.propriedade;
+
+---
+
+(source_file
+  (variable_declaration
+    (identifier)
+    (arrow_function_expression
+      (parameter
+        (identifier))
+      (binary_expression
+        (identifier)
+        (identifier))))
+  (variable_declaration
+    (identifier)
+    (optional_chain_expression
+      (identifier)
+      (identifier))))
+
+==================
+Spread arguments
+==================
+
+executar(...itens, "fim");
+
+---
+
+(source_file
+  (expression_statement
+    (call_expression
+      (identifier)
+      (arguments
+        (argument
+          (identifier))
+        (argument
+          (string))))))
+
+==================
+Super, isto, vazio and excluir
+==================
+
+var base = super.inicializar();
+var self = isto;
+var valor = vazio chamada();
+excluir objeto.propriedade;
+
+---
+
+(source_file
+  (variable_declaration
+    (identifier)
+    (call_expression
+      (member_expression
+        (super_expression)
+        (identifier))
+      (arguments)))
+  (variable_declaration
+    (identifier)
+    (this_expression))
+  (variable_declaration
+    (identifier)
+    (void_expression
+      (call_expression
+        (identifier)
+        (arguments))))
+  (expression_statement
+    (delete_expression
+      (member_expression
+        (identifier)
+        (identifier)))))
+
+==================
+Anonymous function expression
+==================
+
+var soma = funcao(a, b) {
+  retorna a + b;
+};
+
+var gerador = assincrono funcao() {
+  retorna 1;
+};
+
+---
+
+(source_file
+  (variable_declaration
+    (identifier)
+    (anonymous_function_expression
+      (parameter
+        (identifier))
+      (parameter
+        (identifier))
+      (block
+        (return_statement
+          (binary_expression
+            (identifier)
+            (identifier))))))
+  (variable_declaration
+    (identifier)
+    (anonymous_function_expression
+      (block
+        (return_statement
+          (number))))))

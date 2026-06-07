@@ -6,6 +6,9 @@ authors = ["Design Líquido <contato@designliquido.com.br>"]
 description = "Suporte a Delégua e dialetos no Zed usando @designliquido/delegua-lsp."
 repository = "https://github.com/DesignLiquido/zed"
 
+[grammars.delegua]
+repository = "file://./gramaticas/tree-sitter-delegua"
+
 [language_servers.delegua-lsp]
 name = "Delégua LSP"
 languages = [

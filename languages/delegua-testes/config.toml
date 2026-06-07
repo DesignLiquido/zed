@@ -1,5 +1,5 @@
 name = "Delégua Testes"
-grammar = "javascript"
+grammar = "delegua"
 path_suffixes = ["teste.delegua"]
 line_comments = ["// "]
 tab_size = 4

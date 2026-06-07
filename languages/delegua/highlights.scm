@@ -8,6 +8,8 @@
 (function_declaration (identifier) @function)
 (method_declaration (identifier) @function.method)
 (class_declaration (identifier) @type)
+(interface_declaration (identifier) @type)
+(extension_declaration (identifier) @type)
 
 (import_statement) @keyword
 (if_statement) @keyword
